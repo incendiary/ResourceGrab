@@ -143,6 +143,7 @@ GCP credentials are managed using a service account. The service account key is 
   "lambda_role_arn": "arn:aws:iam::your-account-id:role/your-lambda-execution-role",
   "s3_bucket_name": "resource-target-list-bucket",
   "dynamodb_table_name": "ResourceClaims",
+  "csp": ["AWS"],
   "lambda_functions": [
     {
       "name": "ClaimResources",
