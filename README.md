@@ -1,4 +1,4 @@
-# Resource Guard
+# Resource Grab
 
 Resource Guard is a serverless application that manages and releases resources across AWS, Azure, and GCP. It is designed to run on AWS Lambda and utilizes AWS Secrets Manager for secure credential storage.
 
@@ -135,7 +135,7 @@ Azure credentials are handled using a service principal. The service principal c
 ### GCP
 GCP credentials are managed using a service account. The service account key is stored in AWS Secrets Manager and retrieved within the Lambda function for authentication.
 
-## Configuration File
+## Configuration Files
 
 ### `config.json`
 ```json
@@ -159,3 +159,60 @@ GCP credentials are managed using a service account. The service account key is 
   ]
 }
 ```
+
+### `target_list.json`
+```json
+{
+  "targets": [
+    {
+      "resource_id": "54.235.55.101",
+      "region": "us-east-1",
+      "provider": "AWS",
+      "type": "IP"
+    },
+    {
+      "resource_id": "my-load-balancer",
+      "region": "us-west-1",
+      "provider": "AWS",
+      "type": "LoadBalancer"
+    },
+    {
+      "resource_id": "35.203.128.91",
+      "region": "us-central1",
+      "provider": "GCP",
+      "type": "IP"
+    },
+    {
+      "resource_id": "23.102.135.246",
+      "region": "resource-group-1",
+      "provider": "Azure",
+      "type": "IP"
+    },
+    {
+      "resource_id": "15.223.49.81",
+      "region": "ca-central-1",
+      "provider": "AWS",
+      "type": "IP"
+    },
+    {
+      "resource_id": "my-gcp-load-balancer",
+      "region": "europe-west1",
+      "provider": "GCP",
+      "type": "LoadBalancer"
+    },
+    {
+      "resource_id": "52.187.34.11",
+      "region": "resource-group-2",
+      "provider": "Azure",
+      "type": "IP"
+    }
+  ]
+}
+```
+
+### Explanation
+
+- **`resource_id`**: The unique identifier of the resource.
+- **`region`**: The region or resource group where the resource is located.
+- **`provider`**: The cloud service provider (e.g., AWS, GCP, Azure).
+- **`type`**: The type of the resource (e.g., IP, LoadBalancer).
